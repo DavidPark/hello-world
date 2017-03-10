@@ -65,13 +65,11 @@ function checkRequiredInputs($targetForm){
 			var $label = $currentInput.closest("label");
 			if($label=="" || $label.length<1){
 				$label = $currentInput.prevAll("label");
-
 				if($label=="" || $label.length<1){
 					var inputId = $currentInput.attr("id");
 					$label = $("label[for='"+inputId+"']");
 				}
 			}
-
 			alert( $label.text()+"을(를) 입력해주십시오" );
 			//$currentInput.triggerHandler("focus");
 			console.log($currentInput);
@@ -113,9 +111,6 @@ function resetCurrentPage(page){
 	}
 }
 
-/**
- * Class Util Class for javascript object 
- */
 var ClassUtil = {
     create: function(prototype) {
         var ret =function() {
@@ -126,31 +121,51 @@ var ClassUtil = {
     }
 }
 
-/**
- * Obserbable
- */
 var obserbable = function(newVal) {
+
 	var val = 0;
+
 	var listeners = [];
+
 	
+
 	function notify(newVal){
-		listeners.forEach(function(listener)){
+
+		listeners.forEach(function(listener){
+
 			listener(newVal);
-		}
+
+		});
+
 	}
+
 	
+
 	function accessor(newVal){
-		if(arguents.length && newVal!=val){
+
+		if(arguments.length && newVal!=val){
+
 			val = newVal;
+
 			notify(val);
+
 		}
+
 		return val;
+
 	}
+
 	
+
 	accessor.subscribe = function(listener){
+
 		listeners.push(listener);
+
 	}
+
 	
+
 	return accessor;
+
 }
 // 얼레리꼴레리
