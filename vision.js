@@ -65,6 +65,7 @@ function checkRequiredInputs($targetForm){
 			var $label = $currentInput.closest("label");
 			if($label=="" || $label.length<1){
 				$label = $currentInput.prevAll("label");
+
 				if($label=="" || $label.length<1){
 					var inputId = $currentInput.attr("id");
 					$label = $("label[for='"+inputId+"']");
@@ -123,4 +124,32 @@ var ClassUtil = {
         ret.prototype=prototype;
         return ret;
     }
+}
+
+/**
+ * Obserbable
+ */
+var obserbable = function(newVal) {
+	var val = 0;
+	var listeners = [];
+	
+	function notify(newVal){
+		listeners.forEach(function(listener)){
+			listener(newVal);
+		}
+	}
+	
+	function accessor(newVal){
+		if(arguents.length && newVal!=val){
+			val = newVal;
+			notify(val);
+		}
+		return val;
+	}
+	
+	accessor.subscribe = function(listener){
+		listeners.push(listener);
+	}
+	
+	return accessor;
 }
