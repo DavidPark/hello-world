@@ -153,4 +153,4 @@ var obserbable = function(newVal) {
 	
 	return accessor;
 }
-// 
+// 얼레리꼴레리
