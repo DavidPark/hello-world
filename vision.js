@@ -70,6 +70,7 @@ function checkRequiredInputs($targetForm){
 					$label = $("label[for='"+inputId+"']");
 				}
 			}
+
 			alert( $label.text()+"을(를) 입력해주십시오" );
 			//$currentInput.triggerHandler("focus");
 			console.log($currentInput);
@@ -111,6 +112,9 @@ function resetCurrentPage(page){
 	}
 }
 
+/**
+ * Class Util Class for javascript object 
+ */
 var ClassUtil = {
     create: function(prototype) {
         var ret =function() {
